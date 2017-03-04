@@ -1,7 +1,10 @@
-.gradle/
-build/
-.idea/
-captures/
+/.gradle/
+/.idea/
+/captures/
+/build/
+/*/build/
+/*/src/test/
+/*/src/androidTest/
 
 *.iml
 local.properties
