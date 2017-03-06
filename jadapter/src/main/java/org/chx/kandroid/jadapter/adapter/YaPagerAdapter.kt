@@ -12,7 +12,7 @@ class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless: Boolean
 
     override fun getCount() = if (boundless) Int.MAX_VALUE else proxy.size
 
-    fun positionAt(index: Int): Int {
+    fun positionOf(index: Int): Int {
         val halfCount = count / 2
         return halfCount - halfCount % proxy.size + index
     }
