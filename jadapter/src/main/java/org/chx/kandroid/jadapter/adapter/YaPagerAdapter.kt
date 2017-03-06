@@ -2,30 +2,27 @@ package org.chx.kandroid.jadapter.adapter
 
 import android.support.v4.view.PagerAdapter
 import android.util.SparseArray
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import org.chx.kandroid.jadapter.ViewHolder
-import org.chx.kandroid.jadapter.ViewAdapter
+import org.chx.kandroid.jadapter.proxy.ViewHolderProvider
 
-internal class YaPagerAdapter<D>(val dispatcher: ViewAdapter<D>, val boundless:Boolean) : PagerAdapter() {
+class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless:Boolean = false) : PagerAdapter() {
     val views = SparseArray<View>()
 
-    override fun getCount() = if (boundless) Int.MAX_VALUE else  dispatcher.size
+    override fun getCount() = if (boundless) Int.MAX_VALUE else  proxy.size
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val realPos = position % dispatcher.size
-        val data = dispatcher[realPos]
+        val realPos = position % proxy.size
+        val data = proxy[realPos]
+        var itemView = views[realPos]
         val viewHolder: ViewHolder<D>
-        val itemView: View
-        if (views[realPos] == null) {
-            val layoutRes = dispatcher.getLayoutRes(dispatcher.getViewType(realPos))
-            itemView = LayoutInflater.from(container.context).inflate(layoutRes, null)
-            viewHolder = dispatcher.getViewHolder(itemView)
+        if (itemView == null) {
+            viewHolder = proxy.getViewHolder(container, position)
+            itemView = viewHolder.itemView
             itemView.tag = viewHolder
             views.setValueAt(realPos, itemView)
         } else {
-            itemView = views[realPos]
             @Suppress("UNCHECKED_CAST")
             viewHolder = itemView.tag as ViewHolder<D>
             (itemView.parent as? ViewGroup)?.removeView(itemView)
@@ -39,7 +36,7 @@ internal class YaPagerAdapter<D>(val dispatcher: ViewAdapter<D>, val boundless:B
     override fun isViewFromObject(view: View, obj: Any) = view == obj
 
     override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-        val realPos = position % dispatcher.size
+        val realPos = position % proxy.size
         val itemView = views[realPos]
         if (itemView != null && itemView.visibility != View.VISIBLE) container.removeView(itemView)
     }
