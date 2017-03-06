@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import org.chx.kandroid.jadapter.ViewHolder
 import org.chx.kandroid.jadapter.proxy.ViewHolderProvider
 
-class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless:Boolean = false) : PagerAdapter() {
+class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless: Boolean = false) : PagerAdapter() {
     val views = SparseArray<View>()
 
-    override fun getCount() = if (boundless) Int.MAX_VALUE else  proxy.size
+    override fun getCount() = if (boundless) Int.MAX_VALUE else proxy.size
+
+    fun positionAt(index: Int): Int {
+        val halfCount = count / 2
+        return halfCount - halfCount % proxy.size + index
+    }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val realPos = position % proxy.size
