@@ -1,14 +1,13 @@
-package org.chx.kandroid.jadapter.adapter
+package org.chx.kdroid.jadapter.adapter
 
 import android.support.v4.view.PagerAdapter
-import android.util.SparseArray
 import android.view.View
 import android.view.ViewGroup
-import org.chx.kandroid.jadapter.ViewHolder
-import org.chx.kandroid.jadapter.proxy.ViewHolderProvider
+import cn.zhmj.zikao.kt.base.jadapter.ViewHolder
+import org.chx.kdroid.jadapter.proxy.ViewHolderProvider
 
 class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless: Boolean = false) : PagerAdapter() {
-    val views = SparseArray<View>()
+    val views = HashMap<Int, View>()
 
     override fun getCount() = if (boundless) Int.MAX_VALUE else proxy.size
 
@@ -26,7 +25,7 @@ class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless: Boolean
             viewHolder = proxy.getViewHolder(container, position)
             itemView = viewHolder.itemView
             itemView.tag = viewHolder
-            views.setValueAt(realPos, itemView)
+            views[realPos] =  itemView
         } else {
             @Suppress("UNCHECKED_CAST")
             viewHolder = itemView.tag as ViewHolder<D>
@@ -43,6 +42,9 @@ class YaPagerAdapter<D>(val proxy: ViewHolderProvider<D>, val boundless: Boolean
     override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
         val realPos = position % proxy.size
         val itemView = views[realPos]
-        if (itemView != null && itemView.visibility != View.VISIBLE) container.removeView(itemView)
+        if (itemView != null && itemView.visibility != View.VISIBLE) {
+            container.removeView(itemView)
+            views.remove(realPos)
+        }
     }
 }

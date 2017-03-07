@@ -1,8 +1,8 @@
-package org.chx.kandroid.jadapter.proxy
+package org.chx.kdroid.jadapter.proxy
 
-import org.chx.kandroid.jadapter.adapter.YaListAdapter
-import org.chx.kandroid.jadapter.adapter.YaPagerAdapter
-import org.chx.kandroid.jadapter.adapter.YaRecyclerAdapter
+import org.chx.kdroid.jadapter.adapter.YaListAdapter
+import org.chx.kdroid.jadapter.adapter.YaPagerAdapter
+import org.chx.kdroid.jadapter.adapter.YaRecyclerAdapter
 
 
 fun <D> ViewHolderProvider<D>.list() = YaListAdapter(this)

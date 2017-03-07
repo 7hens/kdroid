@@ -1,10 +1,10 @@
-package org.chx.kandroid.jadapter.proxy
+package org.chx.kdroid.jadapter.proxy
 
 import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.chx.kandroid.jadapter.ViewHolder
+import cn.zhmj.zikao.kt.base.jadapter.ViewHolder
 
 
 abstract class AdapterProxy<D>(dataList: List<D>) : ViewHolderProvider<D>(dataList) {

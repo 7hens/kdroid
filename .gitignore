@@ -5,6 +5,7 @@
 /*/build/
 /*/src/test/
 /*/src/androidTest/
+/push-jadapter.cmd
 
 *.iml
 local.properties

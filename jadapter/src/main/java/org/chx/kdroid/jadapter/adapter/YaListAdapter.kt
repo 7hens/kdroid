@@ -1,10 +1,10 @@
-package org.chx.kandroid.jadapter.adapter
+package org.chx.kdroid.jadapter.adapter
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import org.chx.kandroid.jadapter.ViewHolder
-import org.chx.kandroid.jadapter.proxy.ViewHolderProvider
+import cn.zhmj.zikao.kt.base.jadapter.ViewHolder
+import org.chx.kdroid.jadapter.proxy.ViewHolderProvider
 
 class YaListAdapter<D>(val proxy: ViewHolderProvider<D>) : BaseAdapter()  {
     override fun getCount() = proxy.size

@@ -1,4 +1,4 @@
-package org.chx.kandroid.jadapter
+package org.chx.kdroid.jadapter
 
 import android.view.View
 
