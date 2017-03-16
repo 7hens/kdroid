@@ -1,1 +1,1 @@
-include ':sample', ':irefresh', ':jadapter'
+include ':sample', ':kdroid'
