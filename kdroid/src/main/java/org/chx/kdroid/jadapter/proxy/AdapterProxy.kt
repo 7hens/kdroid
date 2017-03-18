@@ -4,27 +4,24 @@ import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.chx.kdroid.jadapter.ViewHolder
 
-
-abstract class AdapterProxy<D>(dataList: List<D>) : ViewHolderProvider<D>(dataList) {
+abstract class AdapterProxy<D>(dataList: List<D>) : ViewHolder.Factory<D>(dataList) {
     open fun getViewType(position: Int): Int = 0
 
     abstract fun getLayoutRes(viewType: Int): Int
 
     abstract fun getViewHolder(itemView: View): ViewHolder<D>
 
-    override fun getViewHolder(parent: ViewGroup, position: Int): ViewHolder<D> {
-        return getViewHolderWithViewType(parent, getViewType(position))
+    override fun createViewHolder(container: ViewGroup, position: Int): ViewHolder<D> {
+        return createViewHolderWithViewType(container, getViewType(position))
     }
 
-    fun getViewHolderWithViewType(parent: ViewGroup, viewType: Int): ViewHolder<D> {
-        return getViewHolderWithLayoutRes(parent, getLayoutRes(viewType))
+    fun createViewHolderWithViewType(container: ViewGroup, viewType: Int): ViewHolder<D> {
+        return createViewHolderWithLayoutRes(container, getLayoutRes(viewType))
     }
 
-    fun getViewHolderWithLayoutRes(parent: ViewGroup, layoutRes: Int): ViewHolder<D> {
-        val itemView = LayoutInflater.from(parent.context).inflate(layoutRes, parent, false)
-        return getViewHolder(itemView)
+    fun createViewHolderWithLayoutRes(container: ViewGroup, layoutRes: Int): ViewHolder<D> {
+        return getViewHolder(LayoutInflater.from(container.context).inflate(layoutRes, container, false))
     }
 
     companion object {

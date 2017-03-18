@@ -8,18 +8,12 @@ class YaFragmentPagerAdapter(fm: FragmentManager, private val fragClassList:List
     : FragmentPagerAdapter(fm) {
 
     private val fragmentList = HashMap<Int, Fragment>()
-    
+
     override fun getCount() = if (boundless) Int.MAX_VALUE else fragClassList.size
 
     override fun getItem(position: Int): Fragment {
         val realPos = position % fragClassList.size
-        var fragment = fragmentList[realPos]
-        if (fragment == null) {
-            fragment = fragClassList[realPos].newInstance()
-            fragmentList[realPos] = fragment
-            return fragment
-        }
-        return fragment
+        return fragmentList[realPos] ?: fragClassList[realPos].newInstance().apply { fragmentList[realPos] = this }
     }
 
     fun positionOf(index: Int): Int {
