@@ -15,12 +15,11 @@ abstract class AdapterDelegate<D>(dataList: List<D>) : ViewHolder.Factory<D>(dat
     fun getViewHolder(position: Int) = holderList[position]
 
     fun removeViewHolder(position: Int): ViewHolder<D>? {
-        val realPos = position % size
-        val viewHolder = holderList[realPos]
+        val viewHolder = holderList[position]
         val itemView = viewHolder?.itemView
         if (itemView != null && itemView.visibility != View.VISIBLE) {
             (itemView.parent as? ViewGroup)?.removeView(itemView)
-            holderList.remove(realPos)
+            holderList.remove(position)
         }
         return viewHolder
     }

@@ -12,6 +12,10 @@ class YaListAdapter<D>(val delegate: AdapterDelegate<D>) : BaseAdapter() {
 
     override fun getItemId(position: Int) = position.toLong()
 
-    override fun getView(position: Int, convertView: View?, container: ViewGroup)
-            = delegate.getViewHolder(container, position).itemView
+    override fun getView(position: Int, convertView: View?, container: ViewGroup): View {
+        return delegate.getViewHolder(container, position).let {
+            delegate.bindViewHolder(it, position)
+            it.itemView
+        }
+    }
 }

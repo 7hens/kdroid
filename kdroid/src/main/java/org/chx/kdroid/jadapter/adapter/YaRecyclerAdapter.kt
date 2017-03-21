@@ -10,8 +10,9 @@ class YaRecyclerAdapter<D>(val delegate: ViewHolder.Factory<D>) : RecyclerView.A
 
     override fun getItemViewType(position: Int) = position
 
-    override fun onCreateViewHolder(container: ViewGroup, viewType: Int): YaViewHolder<D>
-            = YaViewHolder(delegate.createViewHolder(container, viewType))
+    override fun onCreateViewHolder(container: ViewGroup, viewType: Int): YaViewHolder<D> {
+        return YaViewHolder(delegate.createViewHolder(container, viewType))
+    }
 
     override fun onBindViewHolder(holder: YaViewHolder<D>, position: Int) {
         delegate.bindViewHolder(holder.holder, position)
