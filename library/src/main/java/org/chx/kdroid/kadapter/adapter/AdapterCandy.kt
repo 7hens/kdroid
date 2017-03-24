@@ -2,13 +2,13 @@ package org.chx.kdroid.kadapter.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
-import org.chx.kdroid.kadapter.AdapterDelegate
+import org.chx.kdroid.kadapter.KAdapter
 import org.chx.kdroid.kadapter.HolderView
 import kotlin.reflect.KClass
 
-fun <D> AdapterDelegate<D>.listAdapter() = YaListAdapter(this)
+fun <D> KAdapter<D>.listAdapter() = YaListAdapter(this)
 
-fun <D> AdapterDelegate<D>.pagerAdapter(boundless: Boolean = false) = YaPagerAdapter(this, boundless)
+fun <D> KAdapter<D>.pagerAdapter(boundless: Boolean = false) = YaPagerAdapter(this, boundless)
 
 fun <D> HolderView.Factory<D>.recyclerAdapter() = YaRecyclerAdapter(this)
 

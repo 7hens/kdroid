@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import org.chx.kdroid.kadapter.HolderView
 
-abstract class AdapterDelegate<D>(dataList: List<D>) : HolderView.Factory<D>(dataList) {
+abstract class KAdapter<D>(dataList: List<D>) : HolderView.Factory<D>(dataList) {
     private val viewList = HashMap<Int, HolderView<D>>()
 
     fun getView(container: ViewGroup, position: Int): HolderView<D> {
@@ -25,8 +25,8 @@ abstract class AdapterDelegate<D>(dataList: List<D>) : HolderView.Factory<D>(dat
     }
 
     companion object {
-        fun <D> singleLayout(dataList: List<D>, @LayoutRes layoutRes: Int, holderFunc: (View) -> HolderView<D>): AdapterDelegate<D> {
-            return object : AdapterDelegate<D>(dataList) {
+        fun <D> singleLayout(dataList: List<D>, @LayoutRes layoutRes: Int, holderFunc: (View) -> HolderView<D>): KAdapter<D> {
+            return object : KAdapter<D>(dataList) {
                 override fun createView(container: ViewGroup, position: Int): HolderView<D> {
                     return holderFunc(LayoutInflater.from(container.context).inflate(layoutRes, container, false))
                 }

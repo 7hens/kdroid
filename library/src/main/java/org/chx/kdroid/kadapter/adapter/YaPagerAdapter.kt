@@ -3,9 +3,9 @@ package org.chx.kdroid.kadapter.adapter
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
-import org.chx.kdroid.kadapter.AdapterDelegate
+import org.chx.kdroid.kadapter.KAdapter
 
-class YaPagerAdapter<D>(val delegate: AdapterDelegate<D>, val boundless: Boolean = false) : PagerAdapter() {
+class YaPagerAdapter<D>(val delegate: KAdapter<D>, val boundless: Boolean = false) : PagerAdapter() {
 
     val firstPosition: Int get () = (count / 2).let { it - it % delegate.size }
 

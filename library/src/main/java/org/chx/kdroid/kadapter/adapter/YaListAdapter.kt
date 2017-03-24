@@ -3,9 +3,9 @@ package org.chx.kdroid.kadapter.adapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import org.chx.kdroid.kadapter.AdapterDelegate
+import org.chx.kdroid.kadapter.KAdapter
 
-class YaListAdapter<D>(val delegate: AdapterDelegate<D>) : BaseAdapter() {
+class YaListAdapter<D>(val delegate: KAdapter<D>) : BaseAdapter() {
     override fun getItem(position: Int) = delegate[position]
 
     override fun getCount() = delegate.size
