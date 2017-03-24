@@ -1,9 +1,9 @@
-package org.chx.kdroid.jadapter.adapter
+package org.chx.kdroid.kadapter.adapter
 
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
-import org.chx.kdroid.jadapter.delegate.AdapterDelegate
+import org.chx.kdroid.kadapter.AdapterDelegate
 
 class YaPagerAdapter<D>(val delegate: AdapterDelegate<D>, val boundless: Boolean = false) : PagerAdapter() {
 
@@ -13,15 +13,15 @@ class YaPagerAdapter<D>(val delegate: AdapterDelegate<D>, val boundless: Boolean
     
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val realPos = position % delegate.size
-        return delegate.getViewHolder(container, realPos).let {
-            delegate.bindViewHolder(it, realPos)
-            it.itemView.apply { container.addView(this) }
+        return delegate.getView(container, realPos).apply {
+            delegate.bindView(this, realPos)
+            container.addView(this)
         }
     }
 
     override fun isViewFromObject(view: View, obj: Any) = view == obj
 
     override fun destroyItem(container: ViewGroup, position: Int, obj: Any) {
-        delegate.removeViewHolder(position % delegate.size)
+        delegate.removeView(position % delegate.size)
     }
 }

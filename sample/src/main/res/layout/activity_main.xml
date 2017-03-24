@@ -5,11 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".sample.MainActivity">
+    tools:context="org.chx.kdroid.sample.MainActivity">
 
     <Button
         android:text="Adapter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <ListView
+        android:id="@+id/vListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

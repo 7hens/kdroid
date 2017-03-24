@@ -1,4 +1,4 @@
-package org.chx.kdroid.jadapter.adapter
+package org.chx.kdroid.kadapter.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

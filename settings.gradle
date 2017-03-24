@@ -1,1 +1,1 @@
-include ':sample', ':kdroid'
+include ':sample', ':library'
