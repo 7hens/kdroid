@@ -6,6 +6,8 @@ import android.widget.LinearLayout
 
 abstract class HolderView<in D>(itemView: View) : LinearLayout(itemView.context) {
     init {
+        setMeasuredDimension(itemView.measuredWidth, itemView.measuredHeight)
+        layoutParams = itemView.layoutParams
         this.addView(itemView)
     }
 
