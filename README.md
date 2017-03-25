@@ -5,7 +5,7 @@
 
 KDroid 是用一个 Kotlin 写的 Android 库。希望通过 KDroid 来使得 Android 的开发更加方便快捷。
 
-> Kotlin 是一门运行于 JVM 上的便捷灵活的语言，它完全兼容 Java，所以不用担心兼容性问题。
+> Kotlin 是一门运行于 JVM 上的语言，完全兼容 Java，所以不用担心兼容性问题。
 
 ## 导入 KDroid
 
