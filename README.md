@@ -1,7 +1,6 @@
 # KDroid
 
 [![Bintray](https://img.shields.io/bintray/v/7hens/maven/KDroid.svg)](https://bintray.com/7hens/maven/KDroid)
-[![GitHub tag](https://img.shields.io/github/tag/7hens/KDroid.svg)](https://github.com/7hens/KDroid)
 
 KDroid 是用一个 Kotlin 写的 Android 库。希望通过 KDroid 来使得 Android 的开发更加方便快捷。
 
