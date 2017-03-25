@@ -4,6 +4,7 @@ project.archivesBaseName = PROJ_ARTIFACTID
 
 apply plugin: 'com.jfrog.bintray'
 apply plugin: "com.jfrog.artifactory"
+apply plugin: 'maven-publish'
 
 
 //"java -Djava.ext.dirs=. -jar dokka-fatjar.jar exrecyclerview/src/main/kotlin/ -format javadoc -output exrecyclerview/build/doc"
@@ -106,9 +107,9 @@ publishing {
     }
 }
 
-afterEvaluate {
-    publishing.publications.mavenKotlin.artifact(bundleRelease)
-}
+//afterEvaluate {
+//    publishing.publications.mavenKotlin.artifact(bundleRelease)
+//}
 
 bintray {
     Properties properties = new Properties()
@@ -146,7 +147,7 @@ artifactory {
             repoKey = 'oss-snapshot-local' //The Artifactory repository key to publish to
             username = bintray.user
             password = bintray.key
-            maven = true
+//            maven = true
         }
         defaults {
             //这里的名字和上面红色的名字一致即可，会将其包含的输出上传到jfrog上去
