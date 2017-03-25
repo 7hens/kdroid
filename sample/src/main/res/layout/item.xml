@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="200dp">
 
     <TextView
         android:id="@+id/vTitle"
@@ -19,5 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HolderView"/>
+
+    <TextView
+        android:text="Bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
