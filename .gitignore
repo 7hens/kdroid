@@ -1,12 +1,11 @@
-/.gradle/
-/.idea/
-/captures/
-/build/
-/*/build/
-/*/src/test/
-/*/src/androidTest/
-/push-jadapter.cmd
+.gradle/
+.idea/
+captures/
+build/
+*/src/test/
+*/src/androidTest/
 
+publish-kdroid.cmd
 *.iml
 local.properties
 .DS_Store
