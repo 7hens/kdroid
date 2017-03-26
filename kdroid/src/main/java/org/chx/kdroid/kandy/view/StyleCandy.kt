@@ -1,4 +1,4 @@
-package org.chx.kdroid.candy.view
+package org.chx.kdroid.kandy.view
 
 import android.content.Context
 import android.content.res.TypedArray

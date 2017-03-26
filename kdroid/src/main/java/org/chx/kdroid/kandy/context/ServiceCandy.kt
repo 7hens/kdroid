@@ -1,4 +1,4 @@
-package org.chx.kdroid.candy.context
+package org.chx.kdroid.kandy.context
 
 import android.app.Service
 import android.content.Context
