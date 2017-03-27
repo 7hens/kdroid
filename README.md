@@ -12,7 +12,7 @@ KDroid 是用一个用 Kotlin 写的轻量级 Android 库。希望通过 KDroid 
 ## 导入 KDroid
 
 在 module 的 build.gradle 中添加依赖
-
+https://img.shields.io/badge/kotlin-v1.1.1-blue.svg
 ```groovy
 compile "org.chx.kdroid:kdroid:1.0.2"
 ```

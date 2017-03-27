@@ -10,11 +10,12 @@ class YaPagerAdapter<D>(val delegate: KAdapter<D>, val boundless: Boolean = fals
     val firstPosition: Int get () = (count / 2).let { it - it % delegate.size }
 
     override fun getCount() = if (boundless) Int.MAX_VALUE else delegate.size
-    
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val realPos = position % delegate.size
         return delegate.getView(container, realPos).apply {
             delegate.bindView(this, realPos)
+            (parent as? ViewGroup)?.removeView(this)
             container.addView(this)
         }
     }

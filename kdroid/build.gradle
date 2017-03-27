@@ -37,7 +37,7 @@ dependencies {
 publish{
     groupId = 'org.chx.kdroid'
     artifactId = 'kdroid'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3-SNAPSHOT'
     desc = 'Android library written in Kotlin'
     website = 'https://github.com/7hens/KDroid'
 }

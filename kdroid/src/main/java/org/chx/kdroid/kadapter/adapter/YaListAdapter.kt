@@ -6,6 +6,7 @@ import android.widget.BaseAdapter
 import org.chx.kdroid.kadapter.KAdapter
 
 class YaListAdapter<D>(val delegate: KAdapter<D>) : BaseAdapter() {
+
     override fun getItem(position: Int) = delegate[position]
 
     override fun getCount() = delegate.size
