@@ -2,6 +2,8 @@
 
 [![Bintray](https://img.shields.io/bintray/v/7hens/maven/kdroid.svg)](https://bintray.com/7hens/maven/kdroid)
 [![license](https://img.shields.io/github/license/7hens/KDroid.svg)](https://github.com/7hens/KDroid/blob/master/LICENSE)
+![kotlin version](https://img.shields.io/badge/kotlin_version-1.1.1-blue.svg)
+![android support](https://img.shields.io/badge/android_support-25.1.1-blue.svg)
 
 KDroid 是用一个用 Kotlin 写的轻量级 Android 库。希望通过 KDroid 来使得 Android 的开发更加方便快捷。
 
@@ -9,21 +11,10 @@ KDroid 是用一个用 Kotlin 写的轻量级 Android 库。希望通过 KDroid 
 
 ## 导入 KDroid
 
-1) 在 module 的 build.gradle 中添加依赖
+在 module 的 build.gradle 中添加依赖
 
 ```groovy
 compile "org.chx.kdroid:kdroid:1.0.2"
-```
-
-2) 在项目根目录的 build.gradle 中添加仓库 url
-
-```groovy
-allproject {
-    repositories {
-        jcenter()
-        maven { url 'https://dl.bintray.com/7hens/maven/' }
-    }
-}
 ```
 
 ## 万能的 KAdapter
