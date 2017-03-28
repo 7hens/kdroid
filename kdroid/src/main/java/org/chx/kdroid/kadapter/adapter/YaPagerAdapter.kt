@@ -4,6 +4,7 @@ import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import org.chx.kdroid.kadapter.KAdapter
+import org.chx.kdroid.kandy.view.removeFromParent
 
 class YaPagerAdapter<D>(val delegate: KAdapter<D>, val boundless: Boolean = false) : PagerAdapter() {
 
@@ -15,7 +16,7 @@ class YaPagerAdapter<D>(val delegate: KAdapter<D>, val boundless: Boolean = fals
         val realPos = position % delegate.size
         return delegate.getView(container, realPos).apply {
             delegate.bindView(this, realPos)
-            (parent as? ViewGroup)?.removeView(this)
+            removeFromParent()
             container.addView(this)
         }
     }

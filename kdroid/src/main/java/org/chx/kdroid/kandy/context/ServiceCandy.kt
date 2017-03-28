@@ -5,6 +5,6 @@ import android.content.Context
 import android.content.Intent
 import kotlin.reflect.KClass
 
-fun <S : Service> Context.startService(cls: KClass<S>, func: Intent.() -> Unit = {}) {
-    startService(Intent(this, cls.java).apply { func() })
+fun <S : Service> KClass<S>.start(context: Context, func: Intent.() -> Unit = {}) {
+    context.startService(Intent(context, java).apply { func() })
 }
