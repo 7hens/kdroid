@@ -14,7 +14,7 @@ KDroid 是用一个用 Kotlin 写的轻量级 Android 库。希望通过 KDroid 
 在 module 的 build.gradle 中添加依赖
 
 ```groovy
-compile "org.chx.kdroid:kdroid:1.0.2"
+compile "org.chx.kdroid:kdroid:1.0.3"
 ```
 
 ## 万能的 KAdapter
