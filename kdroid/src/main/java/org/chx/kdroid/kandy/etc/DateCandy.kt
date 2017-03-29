@@ -2,7 +2,6 @@ package org.chx.kdroid.kandy.etc
 
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 fun Long.toMillis() = this * 1000L
 

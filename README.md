@@ -54,4 +54,43 @@ adapter.adapt(viewPager)
 listOf(FirstFragment::class, SecondedFragment::class).adapt(viewPager)
 ```
 
+## Kandy
+
+### NotNullOrEmpty
+```kotlin
+/* 
+    if (collection !== null || collection.isEmpty()) {
+         Log.e("tag", collection.toString());
+    } else {
+        Log.e("tag", "collection is null");
+    }
+ */
+if (!collection.notNullOrEmpty {
+    Log.e("tag", it.toString())
+}) {
+    Log.e("tag", "collection is null")
+}
+
+text.notNullOrEmpty {
+    
+}
+```
+
+### View
+```kotlin
+/*
+    View view = LayoutInflator.from(context)
+            .inflate(layoutResId, container, attchToRoot)
+ */
+val view = context.inflateLayout(layoutResId, container, attachToRoot)
+
+// container.inflateLayout(layoutResId, attchRoot)
+```
+
+### Date
+```kotlin
+val text = 1490761489.toMillis().toDateString("yyyy年MM月dd日")
+
+val calendar = System.currentTimeMillis().toCalendar()
+```
 
