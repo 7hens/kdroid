@@ -3,7 +3,7 @@ package org.chx.kdroid.kadapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import org.chx.kdroid.kandy.view.inflateLayout
+import org.chx.kdroid.kandy.etc.inflateLayout
 
 abstract class HolderView<in D>(itemView: View) : LinearLayout(itemView.context) {
     init {

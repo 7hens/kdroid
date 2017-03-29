@@ -30,14 +30,14 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:recyclerview-v7:25.1.1'
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "com.android.support:recyclerview-v7:$support_version"
 }
 
 publish{
     groupId = 'org.chx.kdroid'
     artifactId = 'kdroid'
-    publishVersion = '1.0.3-SNAPSHOT'
+    publishVersion = '1.0.3'
     desc = 'Android library written in Kotlin'
     website = 'https://github.com/7hens/KDroid'
 }
