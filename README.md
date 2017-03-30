@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/7hens/KDroid.png?label=ready&title=Ready)](https://waffle.io/7hens/KDroid)
 # KDroid
 
 [![Bintray](https://img.shields.io/bintray/v/7hens/maven/kdroid.svg)](https://bintray.com/7hens/maven/kdroid)
