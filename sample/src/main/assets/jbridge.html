@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>升级</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script>console.log("jBridge");</script>
+    <!--<script src="https://7hens.cn/kdroid/jbridge.min.js"></script>-->
+</head>
+<body>
+<div id="app" class="container">
+    <div class="form">
+        <div class="form-group row">
+            <label for="downloadUrl" class="col-form-label col-sm-2">下载地址</label>
+            <input type="text" id="downloadUrl" class="form-control col-sm-10" value="http://dldir1.qq.com/weixin/android/weixin6523android1180.apk">
+        </div>
+        <div class="progress row">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+        </div>
+        <button class="btn btn-primary" id="download">下载</button>
+        <button class="btn btn-warning" id="stop">停止</button>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    console.log("hello");
+    //window.onload = useJBridge;
+    useJBridge();
+
+    function useJBridge() {
+        jBridge.invoke("toast", "hello", function (data) {
+          console.log("callback");
+          console.log(data);
+        });
+    }
+  </script>
+</body>
+</html>
+
+

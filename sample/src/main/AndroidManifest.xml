@@ -1,0 +1,48 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.thens.kdroid.sample">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_bird"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".jbridge.JBridgeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.result.SampleActivity"
+            android:exported="true" />
+        <activity android:name=".activity.result.SampleActivity$SecondActivity" />
+        <activity android:name=".app.IntentExtraActivity" />
+
+        <activity android:name=".app.FragmentSelectorActivity" />
+        <activity android:name=".nature.NatureMainActivity" />
+        <activity android:name=".launcher.LauncherMainActivity" />
+        <activity android:name=".test.BirdMainActivity" />
+        <activity android:name=".test.TestRefreshActivity" />
+        <activity android:name=".test.TestVAdapterActivity" />
+        <activity android:name=".vlayout.LayoutMangerActivity" />
+        <activity android:name=".test.TestReplaceActivity" />
+    </application>
+
+</manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/vGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/vPrev"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/vPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上一页"
+        app:layout_constraintLeft_toRightOf="@+id/vGoBack"
+        app:layout_constraintRight_toLeftOf="@+id/vNext" />
+
+    <Button
+        android:id="@+id/vNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下一页"
+        app:layout_constraintLeft_toRightOf="@+id/vPrev"
+        app:layout_constraintRight_toLeftOf="@+id/vLaunch" />
+
+    <Button
+        android:id="@+id/vLaunch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="启动"
+        app:layout_constraintLeft_toRightOf="@+id/vNext"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/vFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vGoBack" />
+</androidx.constraintlayout.widget.ConstraintLayout>

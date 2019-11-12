@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_460"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_content_single"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/_4"
+    tools:contentDescription="警告对话框"
+    tools:layout_margin="@dimen/_16"
+    tools:layout_width="match_parent">
+
+    <TextView
+        android:id="@+id/vDialogTitle"
+        style="@style/Text.Title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20"
+        android:text="温馨提示"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/vDialogMessage"
+        style="@style/Text.Content"
+        android:layout_below="@+id/vDialogTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_30"
+        android:layout_marginLeft="@dimen/_30"
+        android:layout_marginRight="@dimen/_30"
+        android:layout_marginTop="@dimen/_20"
+        android:gravity="center"
+        android:textColor="@color/_FFFFFF"
+        tools:text="确定删除吗？" />
+
+    <View
+        android:id="@+id/vHorizontalDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/vDialogMessage"
+        android:background="#29FFFFFF"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/vVerticalDivider"
+        android:layout_width="1px"
+        android:layout_height="@dimen/_68"
+        android:layout_below="@+id/vHorizontalDivider"
+        android:layout_centerHorizontal="true"
+        android:background="#29FFFFFF"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/vDialogPositive"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_68"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/vVerticalDivider"
+        android:layout_below="@+id/vHorizontalDivider"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="@color/_369FFF"
+        android:textSize="@dimen/s20"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/vDialogNegative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_68"
+        android:layout_alignLeft="@+id/vVerticalDivider"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/vHorizontalDivider"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#CCFFFFFF"
+        android:textSize="@dimen/s20"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</RelativeLayout>

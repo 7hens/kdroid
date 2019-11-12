@@ -1,0 +1,29 @@
+language: android
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - tools
+    - build-tools-27.0.3
+    - android-27
+    - extra-android-m2repository
+    - extra-android-support
+
+jdk: oraclejdk8
+
+notifications:
+  email: false
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.gradle
+
+before_script:
+  - pwd
+  - ls -la
+  - chmod +x ./gradlew
+
+script: ./gradlew build test

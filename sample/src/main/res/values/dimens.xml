@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_top">0dp</dimen>
+    <dimen name="mp_logo_width">@dimen/_56</dimen>
+    <dimen name="mp_logo_height">@dimen/_56</dimen>
+
+    <dimen name="_1">1dp</dimen>
+    <dimen name="_2">2dp</dimen>
+    <dimen name="_4">4dp</dimen>
+    <dimen name="_6">6dp</dimen>
+    <dimen name="_8">8dp</dimen>
+    <dimen name="_10">10dp</dimen>
+    <dimen name="_12">12dp</dimen>
+    <dimen name="_14">14dp</dimen>
+    <dimen name="_16">16dp</dimen>
+    <dimen name="_18">18dp</dimen>
+    <dimen name="_20">20dp</dimen>
+    <dimen name="_22">22dp</dimen>
+    <dimen name="_24">24dp</dimen>
+    <dimen name="_30">30dp</dimen>
+    <dimen name="_32">32dp</dimen>
+    <dimen name="_34">34dp</dimen>
+    <dimen name="_36">36dp</dimen>
+    <dimen name="_40">40dp</dimen>
+    <dimen name="_48">48dp</dimen>
+    <dimen name="_56">56dp</dimen>
+    <dimen name="_58">58dp</dimen>
+    <dimen name="_60">60dp</dimen>
+    <dimen name="_64">64dp</dimen>
+    <dimen name="_68">68dp</dimen>
+    <dimen name="_80">80dp</dimen>
+    <dimen name="_100">100dp</dimen>
+    <dimen name="_160">160dp</dimen>
+
+    <dimen name="s14">14sp</dimen>
+    <dimen name="s16">16sp</dimen>
+    <dimen name="s18">18sp</dimen>
+    <dimen name="s20">20sp</dimen>
+    <dimen name="s22">22sp</dimen>
+    <dimen name="s24">24sp</dimen>
+    <dimen name="s28">28sp</dimen>
+    <dimen name="s30">30sp</dimen>
+    <dimen name="_142">142dp</dimen>
+    <dimen name="_120">120dp</dimen>
+    <dimen name="_86">86dp</dimen>
+    <dimen name="s10">10sp</dimen>
+    <dimen name="_26">26dp</dimen>
+    <dimen name="_28">28dp</dimen>
+    <dimen name="_88">88dp</dimen>
+    <dimen name="_240">240dp</dimen>
+    <dimen name="_200">200dp</dimen>
+    <dimen name="_78">78dp</dimen>
+    <dimen name="_800">800dp</dimen>
+    <dimen name="_460">460dp</dimen>
+    <dimen name="s72">72sp</dimen>
+    <dimen name="_50">50dp</dimen>
+
+</resources>

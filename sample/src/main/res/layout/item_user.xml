@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/vLogo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="8dp"
+        android:contentDescription="@string/app_name"
+        tools:src="@tools:sample/avatars"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/vUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@+id/vLogo"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        tools:text="@tools:sample/full_names" />
+
+    <TextView
+        android:id="@+id/vDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vUserName"
+        android:layout_toRightOf="@+id/vLogo"
+        android:textColor="@color/colorAccent"
+        tools:text="@tools:sample/cities" />
+
+</RelativeLayout>

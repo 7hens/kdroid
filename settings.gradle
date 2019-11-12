@@ -1,0 +1,5 @@
+rootProject.name = "KDroid"
+
+include ':kdroid'
+include ':sample'
+

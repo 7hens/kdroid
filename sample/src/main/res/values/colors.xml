@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/_1A1D23</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">@color/_262C3E</color>
+    <color name="textPrimary">#FFFFFFFF</color>
+    <color name="textPrimaryLight">#6D6E72</color>
+    <color name="white">#FFFFFF</color>
+    <color name="_23272F">#23272F</color>
+    <color name="_262C3E">#262C3E</color>
+    <color name="_FFFFFF">#FFFFFF</color>
+    <color name="_181D2C">#181D2C</color>
+    <color name="_828590">#828590</color>
+    <color name="_1E2435">#1E2435</color>
+    <color name="_252B3D">#252B3D</color>
+    <color name="_999999">#999999</color>
+    <color name="_B5B6BB">#B5B6BB</color>
+    <color name="_686A6E">#686A6E</color>
+    <color name="_3D9AFF">#3D9AFF</color>
+    <color name="_254A78">#254A78</color>
+    <color name="_3376C2">#3376C2</color>
+    <color name="_212537">#212537</color>
+    <color name="_2C303A">#2C303A</color>
+    <color name="_252A33">#252A33</color>
+    <color name="_369CED">#369CED</color>
+    <color name="_777A7E">#777A7E</color>
+    <color name="_8C8E92">#8C8E92</color>
+    <color name="_E64243">#E64243</color>
+    <color name="_4A5263">#4A5263</color>
+    <color name="_1A1D23">#1A1D23</color>
+    <color name="_9A9CA0">#9A9CA0</color>
+    <color name="_369FFF">#369FFF</color>
+    <color name="_CCCCCC">#CCCCCC</color>
+</resources>

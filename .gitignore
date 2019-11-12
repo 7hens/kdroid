@@ -1,0 +1,17 @@
+.gradle/
+.idea/
+.settings/
+captures/
+build/
+buildSrc/libs/vcs-revision-gradle-plugin.jar
+
+*.iml
+*.log
+*.project
+*.classpath
+local.properties
+.DS_Store
+.externalNativeBuild
+publish.cmd
+publish.bat
+publish

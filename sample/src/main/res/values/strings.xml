@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">KDroid</string>
+
+    <string name="icon_mic">&#xe687;</string>
+    <string name="icon_fire">&#xe66c;</string>
+    <string name="icon_new">&#xe667;</string>
+    <string name="icon_message">&#xe665;</string>
+    <string name="icon_yes">&#xe664;</string>
+    <string name="icon_camera">&#xe663;</string>
+    <string name="icon_advice">&#xe662;</string>
+    <string name="icon_search">&#xe651;</string>
+    <string name="icon_refresh">&#xe650;</string>
+    <string name="icon_home">&#xe64f;</string>
+    <string name="icon_location">&#xe64e;</string>
+    <string name="icon_time">&#xe64d;</string>
+    <string name="icon_speaker">&#xe64c;</string>
+    <string name="icon_gear">&#xe64b;</string>
+    <string name="icon_up">&#xe664;</string>
+    <string name="icon_scan">&#xe649;</string>
+    <string name="icon_alarm">&#xe648;</string>
+    <string name="icon_link">&#xe646;</string>
+    <string name="icon_dustbin">&#xe645;</string>
+    <string name="icon_no">&#xe641;</string>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/vTabContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/vMultiItemType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="多视图类型"/>
+
+        <Button
+            android:id="@+id/vCarousel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="轮播"/>
+
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/vRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/vTabContainer">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vList"
+            android:layout_width="match_parent"
+            tools:listitem="@layout/item_user"
+            android:layout_height="match_parent"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</RelativeLayout>

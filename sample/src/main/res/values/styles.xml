@@ -1,0 +1,106 @@
+<resources>
+
+    <style name="DiscoverTabText">
+        <item name="android:textSize">@dimen/s20</item>
+    </style>
+
+    <style name="Text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text.RedPoint">
+        <item name="android:paddingBottom">@dimen/_2</item>
+        <item name="android:paddingLeft">@dimen/_6</item>
+        <item name="android:paddingRight">@dimen/_6</item>
+        <item name="android:paddingTop">@dimen/_2</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/s10</item>
+    </style>
+
+    <style name="Text.Title">
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/_FFFFFF</item>
+        <item name="android:textSize">@dimen/s24</item>
+    </style>
+
+    <style name="Text.Content">
+        <item name="android:textColor">@color/_9A9CA0</item>
+        <item name="android:textSize">@dimen/s20</item>
+    </style>
+
+    <style name="TitleBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TitleBar.GoBack">
+        <item name="android:layout_margin">@dimen/_30</item>
+    </style>
+
+    <style name="TitleBar.Title">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/_FFFFFF</item>
+        <item name="android:layout_marginTop">@dimen/_40</item>
+        <item name="android:textSize">@dimen/_28</item>
+    </style>
+
+    <style name="Button" parent="Text">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Button.Default">
+        <item name="android:layout_width">@dimen/_88</item>
+        <item name="android:layout_height">@dimen/_40</item>
+        <item name="android:textColor">@color/_FFFFFF</item>
+        <item name="android:textSize">@dimen/s18</item>
+    </style>
+
+    <style name="About" />
+
+    <style name="About.Icon">
+        <item name="android:layout_width">@dimen/_78</item>
+        <item name="android:layout_height">@dimen/_78</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/_40</item>
+        <item name="android:layout_marginRight">@dimen/_30</item>
+    </style>
+
+    <style name="About.Title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/_FFFFFF</item>
+        <item name="android:textSize">@dimen/s24</item>
+    </style>
+
+    <style name="About.ContainerBg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_200</item>
+        <item name="android:background">@drawable/bg_content_single</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="About.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Tile" />
+
+    <style name="Tile.Bg">
+        <item name="android:layout_width">@dimen/_800</item>
+        <item name="android:layout_height">@dimen/_120</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">@dimen/_16</item>
+        <item name="android:layout_marginRight">@dimen/_16</item>
+        <item name="android:background">@drawable/bg_content_single</item>
+    </style>
+</resources>

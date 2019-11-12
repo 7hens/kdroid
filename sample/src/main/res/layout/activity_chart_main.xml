@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/vLineChart"
+        android:layout_width="match_parent"
+        android:layout_height="280dp" />
+
+    <cn.thens.kdroid.sample.test.BirdView
+        android:id="@+id/vBird"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <Button
+        android:id="@+id/vToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ALL"
+        app:layout_constraintBottom_toTopOf="@+id/vUp"
+        app:layout_constraintRight_toRightOf="@+id/vDown" />
+
+    <Button
+        android:id="@+id/vUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上"
+        app:layout_constraintBottom_toTopOf="@+id/vDown"
+        app:layout_constraintRight_toRightOf="@+id/vDown" />
+
+    <Button
+        android:id="@+id/vDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="下"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
