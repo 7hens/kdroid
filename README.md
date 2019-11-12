@@ -1,5 +1,6 @@
 # KDroid 
 
+[![jitpack](https://jitpack.io/v/7hens/kdroid.svg)](https://jitpack.io/#7hens/kdroid)
 [![license](https://img.shields.io/github/license/7hens/KDroid.svg)](https://github.com/7hens/KDroid/blob/master/LICENSE)
 [![kotlin](https://img.shields.io/badge/kotlin-1.2.60-blue.svg)](https://github.com/7hens/KDroid/blob/master/build.gradle)
 [![android support](https://img.shields.io/badge/android_support-27.1.1-blue.svg)](https://github.com/7hens/KDroid/blob/master/build.gradle)
