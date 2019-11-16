@@ -7,7 +7,7 @@ import android.content.Intent
 /**
  * @author 7hens
  */
-open class CompanionIntentOptions<out IntentOptions> {
+open class CompanionIntentOptions<out IntentOptions> : IntentExtra {
     private val className: String by lazy { javaClass.name.replace("\$Companion", "") }
 
     @Suppress("UNCHECKED_CAST")

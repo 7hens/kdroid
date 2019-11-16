@@ -11,7 +11,7 @@ import kotlin.properties.ReadWriteProperty
  * @author 7hens
  */
 @Suppress("unused")
-object IntentExtra {
+interface IntentExtra {
 
     fun boolean(defaultValue: Boolean = false): ReadWriteProperty<Intent, Boolean> {
         return with(defaultValue, Intent::getBooleanExtra) { n, v -> putExtra(n, v) }
@@ -125,4 +125,6 @@ object IntentExtra {
     fun stringArrayList(): ReadWriteProperty<Intent, java.util.ArrayList<String>> {
         return with(Intent::getStringArrayListExtra) { n, v -> putExtra(n, v) }
     }
+
+    companion object: IntentExtra
 }

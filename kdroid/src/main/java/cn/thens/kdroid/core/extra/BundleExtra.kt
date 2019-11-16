@@ -16,7 +16,7 @@ import kotlin.properties.ReadWriteProperty
  * @author 7hens
  */
 @Suppress("unused")
-object BundleExtra {
+interface BundleExtra {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     fun binder(): ReadWriteProperty<Bundle, IBinder?> {
         return with(Bundle::getBinder, Bundle::putBinder)
@@ -157,4 +157,6 @@ object BundleExtra {
     fun stringArrayList(): ReadWriteProperty<Bundle, java.util.ArrayList<String>?> {
         return with(Bundle::getStringArrayList, Bundle::putStringArrayList)
     }
+
+    companion object: BundleExtra
 }
