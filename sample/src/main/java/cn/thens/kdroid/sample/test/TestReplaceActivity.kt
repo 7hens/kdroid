@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import cn.thens.kdroid.core.util.dp
+import cn.thens.kdroid.util.dp
 import cn.thens.kdroid.sample.R
 import cn.thens.kdroid.sample.common.view.color
 import cn.thens.kdroid.sample.common.view.generateId

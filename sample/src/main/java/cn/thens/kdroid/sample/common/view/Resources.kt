@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import android.view.View
-import cn.thens.kdroid.core.util.IdGenerator
+import cn.thens.kdroid.util.IdGenerator
 
 fun Context.color(@ColorRes colorId: Int): Int = ContextCompat.getColor(this, colorId)
 fun Context.colorStateList(@ColorRes colorId: Int): ColorStateList? = ContextCompat.getColorStateList(this, colorId)

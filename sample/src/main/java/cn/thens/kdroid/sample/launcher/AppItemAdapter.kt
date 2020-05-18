@@ -10,12 +10,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import cn.thens.kdroid.core.vadapter.VAdapter
-import cn.thens.kdroid.core.vadapter.VRecyclerAdapter
-import cn.thens.kdroid.core.vadapter.toHolder
+import cn.thens.kdroid.vadapter.VAdapter
+import cn.thens.kdroid.vadapter.VRecyclerAdapter
+import cn.thens.kdroid.vadapter.toHolder
 
 class AppItemAdapter : VRecyclerAdapter<ResolveInfo>() {
-    override fun createHolder(viewGroup: ViewGroup, viewType: Int): VAdapter.Holder<ResolveInfo> {
+    override fun createHolder(viewGroup: ViewGroup, itemType: Int): VAdapter.Holder<ResolveInfo> {
         val context = viewGroup.context
         lateinit var vIcon: ImageView
         lateinit var vTitle: TextView

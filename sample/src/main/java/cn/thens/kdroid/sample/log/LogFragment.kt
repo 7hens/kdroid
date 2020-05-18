@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import cn.thens.kdroid.core.util.Logdog
+import cn.thens.kdroid.util.Logdog
 
 class LogFragment : Fragment() {
 

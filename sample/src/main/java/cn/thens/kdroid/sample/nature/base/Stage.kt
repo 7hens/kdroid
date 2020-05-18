@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
-import cn.thens.kdroid.core.io.AndroidMainScope
+import cn.thens.kdroid.io.AndroidMainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

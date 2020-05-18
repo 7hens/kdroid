@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
-import cn.thens.kdroid.core.app.ActivityRequest
-import cn.thens.kdroid.core.util.Logdog
+import cn.thens.kdroid.app.ActivityRequest
+import cn.thens.kdroid.util.Logdog
 
 class SampleActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

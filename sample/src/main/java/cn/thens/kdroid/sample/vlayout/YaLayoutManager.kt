@@ -2,7 +2,7 @@ package cn.thens.kdroid.sample.vlayout
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import cn.thens.kdroid.core.util.Logdog
+import cn.thens.kdroid.util.Logdog
 
 
 class YaLayoutManager : RecyclerView.LayoutManager() {

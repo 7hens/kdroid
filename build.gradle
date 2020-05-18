@@ -8,10 +8,8 @@ buildscript {
     }
     repositories {
         google()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://repository.sonatype.org/content/groups/public' }
-        maven { url 'http://mvnrepository.com/' }
         maven { url "https://jitpack.io" }
         mavenLocal()
     }
@@ -27,10 +25,8 @@ buildscript {
 allprojects {
     repositories {
         google()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://repository.sonatype.org/content/groups/public' }
-        maven { url 'http://mvnrepository.com/' }
         maven { url "https://jitpack.io" }
         mavenLocal()
     }

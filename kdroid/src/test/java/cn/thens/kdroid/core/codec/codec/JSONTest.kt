@@ -1,6 +1,6 @@
 package cn.thens.kdroid.core.codec.codec
 
-import cn.thens.kdroid.core.io.Json
+import cn.thens.kdroid.io.Json
 import cn.thens.kdroid.core.codec.testbean.Person
 import com.google.gson.reflect.TypeToken
 import junit.framework.Assert.assertEquals

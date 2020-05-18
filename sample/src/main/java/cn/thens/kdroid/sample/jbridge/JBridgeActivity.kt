@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.FrameLayout
-import cn.thens.kdroid.core.app.toast
-import cn.thens.kdroid.core.extra.ActivityIntentOptions
-import cn.thens.kdroid.core.web.JBridge
-import cn.thens.kdroid.core.web.WebViewSecurity
-import cn.thens.kdroid.core.util.Logdog
+import cn.thens.kdroid.app.toast
+import cn.thens.kdroid.extra.ActivityIntentOptions
+import cn.thens.kdroid.web.JBridge
+import cn.thens.kdroid.web.WebViewSecurity
+import cn.thens.kdroid.util.Logdog
 
 class JBridgeActivity : Activity() {
     private val url get() = "file:///android_asset/jbridge.html"

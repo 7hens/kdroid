@@ -4,13 +4,14 @@
 
     <application>
         <activity
-            android:name=".app.ActivityRequest$SteppingActivity"
+            android:name="cn.thens.kdroid.app.ActivityRequest$SteppingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@style/Theme.Transparent" />
 
         <provider
-            android:name=".KDroid$InitProvider"
+            android:name="cn.thens.kdroid.KDroid$InitProvider"
             android:authorities="${applicationId}.kdroid.init"
+            android:multiprocess="true"
             android:exported="false" />
 
         <provider

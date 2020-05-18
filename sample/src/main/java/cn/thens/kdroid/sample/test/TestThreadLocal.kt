@@ -1,6 +1,6 @@
 package cn.thens.kdroid.sample.test
 
-import cn.thens.kdroid.core.util.Logdog
+import cn.thens.kdroid.util.Logdog
 
 
 object TestThreadLocal {

@@ -1,7 +1,7 @@
 package cn.thens.kdroid.sample.common.app
 
 import androidx.appcompat.app.AppCompatActivity
-import cn.thens.kdroid.core.io.AndroidMainScope
+import cn.thens.kdroid.io.AndroidMainScope
 import kotlinx.coroutines.cancel
 
 /**
