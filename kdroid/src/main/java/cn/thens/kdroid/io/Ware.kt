@@ -7,6 +7,14 @@ interface Ware<V> {
 
     suspend fun put(value: V)
 
+    suspend fun optional(): V? {
+        return try {
+            get()
+        } catch (e: Throwable) {
+            null
+        }
+    }
+
     fun cache(cache: Ware<V>): Ware<V> {
         val source = this
         return object : Ware<V> {
