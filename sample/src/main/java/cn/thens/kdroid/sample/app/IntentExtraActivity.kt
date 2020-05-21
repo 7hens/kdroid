@@ -16,6 +16,7 @@ class IntentExtraActivity : Activity() {
     }
 
     fun startActivity(context: Context) {
+        val intent = Intent()
         context.startActivity(IntentExtraActivity.intent(context) {
             it.name = "hello"
             it.count = 2
