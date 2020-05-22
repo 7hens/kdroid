@@ -13,7 +13,7 @@ object AndroidPermissions {
         permissions.forEach { permission ->
             if (isGranted(context, permission)) {
                 surePermissions[permission] = true
-            } else if (context is Activity && !shouldRequest(context, permission)) {
+            } else if (context is Activity && shouldExplain(context, permission)) {
                 surePermissions[permission] = false
             } else {
                 notSurePermissions.add(permission)
@@ -26,21 +26,19 @@ object AndroidPermissions {
 
     suspend fun request(context: Context, permission: String): Boolean {
         if (isGranted(context, permission)) return true
-        if (context is Activity && !shouldRequest(context, permission)) {
+        if (context is Activity && shouldExplain(context, permission)) {
             return false
         }
         return ActivityRequest(context).permission(permission)
     }
 
-    fun shouldRequest(activity: Activity, permission: String): Boolean {
+    fun shouldExplain(activity: Activity, permission: String): Boolean {
         return ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
     }
 
     fun isGranted(context: Context, vararg permissions: String): Boolean {
-        return permissions.all { isGranted(ContextCompat.checkSelfPermission(context, it)) }
-    }
-
-    fun isGranted(value: Int): Boolean {
-        return value == PackageManager.PERMISSION_GRANTED
+        return permissions.all {
+            ContextCompat.checkSelfPermission(context, it)  == PackageManager.PERMISSION_GRANTED
+        }
     }
 }

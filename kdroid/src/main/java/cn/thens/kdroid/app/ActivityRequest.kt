@@ -89,7 +89,7 @@ class ActivityRequest(private val context: Context) {
         }
     }
 
-    private class BridgeFragment : Fragment() {
+    class BridgeFragment : Fragment() {
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
             onResult(requestCode, Result(resultCode, data ?: Intent()))
         }
