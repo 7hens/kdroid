@@ -1,142 +1,111 @@
 package cn.thens.kdroid.app
 
-import android.app.Activity
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
-import android.os.Build
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.SparseArray
-import androidx.annotation.RequiresApi
-import kotlinx.coroutines.suspendCancellableCoroutine
-import java.util.concurrent.atomic.AtomicInteger
+import androidx.core.view.ViewCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
-/**
- * @author 7hens
- */
-@Suppress("MemberVisibilityCanBePrivate", "unused")
-abstract class ActivityRequest {
-    open fun getSteppingComponent(context: Context): ComponentName {
-        return ComponentName(context, SteppingActivity::class.java)
+class ActivityRequest(private val context: Context) {
+    @Suppress("UNCHECKED_CAST")
+    private suspend fun <T> request(fn: Fragment.(requestCode: Int) -> Unit): T {
+        return suspendCoroutine<Any> { Contract(fn, it).launch(context) } as T
     }
 
-    protected abstract fun startActivityForResult(context: Activity, requestCode: Int)
+    suspend fun start(intent: Intent, options: Bundle? = null): Result {
+        return request { startActivityForResult(intent, it, options) }
+    }
 
-    fun run(context: Context, callback: Callback = EMPTY_CALLBACK) {
-        requestCodeProvider.compareAndSet(Int.MAX_VALUE, 0)
-        val requestCode = requestCodeProvider.incrementAndGet()
-        try {
-            requestMap.put(requestCode, this)
-            responseMap.put(requestCode, callback)
-            context.startActivity(Intent()
-                    .setComponent(getSteppingComponent(context))
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .putExtra(EXTRA_REQUEST_CODE, requestCode))
-        } catch (e: Throwable) {
-            requestMap.delete(requestCode)
-            responseMap.delete(requestCode)
-            callback.onError(e)
+    suspend fun start(intent: IntentSender, fillInIntent: Intent, flagsMask: Int,
+                      flagsValues: Int, extraFlags: Int, options: Bundle? = null): Result {
+        return request {
+            startIntentSenderForResult(intent, it, fillInIntent, flagsMask,
+                    flagsValues, extraFlags, options)
         }
     }
 
-    suspend fun run(context: Context): Result {
-        return suspendCancellableCoroutine {
-            run(context, object : Callback {
-                override fun onError(e: Throwable) {
-                    it.resumeWithException(e)
-                }
+    suspend fun permissions(vararg permissions: String): Map<String, Boolean> {
+        return request { requestPermissions(permissions, it) }
+    }
 
-                override fun onSuccess(code: Int, data: Intent) {
-                    it.resume(Result(code, data))
+    suspend fun permission(permission: String): Boolean {
+        return permissions(permission)[permission] == true
+    }
+
+    private data class Contract(val request: Fragment.(requestCode: Int) -> Unit,
+                                val continuation: Continuation<Any>) {
+        fun launch(context: Context) {
+            val requestCode = ViewCompat.generateViewId()
+            try {
+                contracts.put(requestCode, this)
+                if (context is FragmentActivity) {
+                    context.supportFragmentManager.apply {
+                        request(findFragmentByTag(FRAGMENT_TAG) ?: BridgeFragment().also {
+                            beginTransaction().add(it, FRAGMENT_TAG).commitNow()
+                        }, requestCode)
+                    }
+                } else {
+                    context.startActivity(Intent(context, BridgeActivity::class.java)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            .putExtra(REQUEST_CODE, requestCode))
                 }
-            })
+            } catch (e: Throwable) {
+                contracts.remove(requestCode)
+                continuation.resumeWithException(e)
+            }
         }
     }
 
     data class Result(val code: Int, val data: Intent)
 
     companion object {
-        private const val EXTRA_REQUEST_CODE = "REQUEST_CODE"
-        private val requestMap = SparseArray<ActivityRequest>()
-        private val responseMap = SparseArray<Callback>()
-        private val requestCodeProvider = AtomicInteger()
-        private val EMPTY_CALLBACK = object : Callback {}
-
-        @JvmStatic
-        fun doRequest(activity: Activity) {
-            val requestCode = activity.intent.getIntExtra(EXTRA_REQUEST_CODE, 0)
-            val request = requestMap.pick(requestCode)
-            try {
-                request!!.startActivityForResult(activity, requestCode)
-            } catch (e: Exception) {
-                activity.finish()
-                responseMap.pick(requestCode)?.onError(e)
-            }
-        }
-
-        @JvmStatic
-        fun onResult(activity: Activity, requestCode: Int, resultCode: Int, data: Intent?) {
-            activity.finish()
-            responseMap.pick(requestCode)?.onSuccess(resultCode, data ?: Intent())
-        }
-
-        private fun <E> SparseArray<E>.pick(requestCode: Int): E? {
-            val element: E? = this[requestCode]
-            delete(requestCode)
-            return element
-        }
-
-        inline fun create(crossinline fn: Activity.(requestCode: Int) -> Unit): ActivityRequest {
-            return object : ActivityRequest() {
-                override fun startActivityForResult(context: Activity, requestCode: Int) {
-                    context.fn(requestCode)
-                }
-            }
-        }
-
-        @JvmStatic
-        fun create(intent: Intent): ActivityRequest {
-            return create { requestCode -> startActivityForResult(intent, requestCode) }
-        }
-
-        @JvmStatic
-        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-        fun create(intent: Intent, options: Bundle?): ActivityRequest {
-            return create { requestCode -> startActivityForResult(intent, requestCode, options) }
-        }
-
-        @JvmStatic
-        fun create(intent: IntentSender, fillInIntent: Intent, flagsMask: Int, flagsValues: Int, extraFlags: Int): ActivityRequest {
-            return create { requestCode ->
-                startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags)
-            }
-        }
-
-        @JvmStatic
-        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-        fun create(intent: IntentSender, fillInIntent: Intent, flagsMask: Int, flagsValues: Int, extraFlags: Int, options: Bundle?): ActivityRequest {
-            return create { requestCode ->
-                startIntentSenderForResult(intent, requestCode, fillInIntent, flagsMask, flagsValues, extraFlags, options)
-            }
-        }
+        private const val FRAGMENT_TAG = "kdroid.ActivityRequest"
+        private const val REQUEST_CODE = "REQUEST_CODE"
+        private val contracts = SparseArray<Contract>()
     }
 
-    interface Callback {
-        fun onError(e: Throwable) {}
-        fun onSuccess(code: Int, data: Intent) {}
-    }
-
-    class SteppingActivity : Activity() {
+    class BridgeActivity : FragmentActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            doRequest(this)
+            launch(intent)
         }
 
+        override fun onNewIntent(intent: Intent?) {
+            super.onNewIntent(intent)
+            launch(intent!!)
+        }
+
+        private fun launch(intent: Intent) {
+            val requestCode = intent.getIntExtra(REQUEST_CODE, 0)
+            contracts[requestCode]!!.launch(this)
+        }
+    }
+
+    private class BridgeFragment : Fragment() {
         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            onResult(this, requestCode, resultCode, data)
+            onResult(requestCode, Result(resultCode, data ?: Intent()))
+        }
+
+        override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+            onResult(requestCode, mutableMapOf<String, Boolean>().also {
+                permissions.forEachIndexed { index, permission ->
+                    it[permission] = grantResults[index] == PackageManager.PERMISSION_GRANTED
+                }
+            })
+        }
+
+        private fun onResult(requestCode: Int, result: Any) {
+            (context as? BridgeActivity)?.moveTaskToBack(true)
+            contracts.get(requestCode)?.continuation?.resume(result)
+            contracts.remove(requestCode)
         }
     }
 }

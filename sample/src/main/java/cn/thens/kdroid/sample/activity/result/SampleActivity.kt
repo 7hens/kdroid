@@ -8,9 +8,12 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import cn.thens.kdroid.app.ActivityRequest
+import cn.thens.kdroid.io.AndroidMainScope
 import cn.thens.kdroid.util.Logdog
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
-class SampleActivity : Activity() {
+class SampleActivity : Activity(), CoroutineScope by AndroidMainScope() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(createContentView(this))
@@ -22,12 +25,11 @@ class SampleActivity : Activity() {
             Button(context).apply {
                 text = "startForResultWithCallback"
                 setOnClickListener {
-                    val intent = Intent(context, SecondActivity::class.java)
-                    ActivityRequest.create(intent).run(context, object: ActivityRequest.Callback {
-                        override fun onSuccess(code: Int, data: Intent) {
-                            Logdog.debug("resultCode: $code")
-                        }
-                    })
+                    launch {
+                        val result = ActivityRequest(context)
+                                .start(Intent(context, SecondActivity::class.java))
+                        Logdog.debug("resultCode: $result")
+                    }
                 }
             }.also { addView(it) }
         }

@@ -4,8 +4,9 @@
 
     <application>
         <activity
-            android:name="cn.thens.kdroid.app.ActivityRequest$SteppingActivity"
+            android:name="cn.thens.kdroid.app.ActivityRequest$BridgeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleInstance"
             android:theme="@style/Theme.Transparent" />
 
         <provider
