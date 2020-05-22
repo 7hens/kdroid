@@ -4,7 +4,7 @@ import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 internal object ExtraProperty {
-    fun <R : Any, T> with(get: R.(String) -> T, set: R.(String, T) -> Unit) = run {
+    inline fun <R : Any, T> with(crossinline get: R.(String) -> T, crossinline set: R.(String, T) -> Unit) = run {
         object : ReadWriteProperty<R, T> {
             override fun getValue(thisRef: R, property: KProperty<*>): T {
                 return get(thisRef, property.name)
@@ -16,7 +16,7 @@ internal object ExtraProperty {
         }
     }
 
-    fun <R : Any, T> with(defaultValue: T, get: R.(String, T) -> T, set: R.(String, T) -> Unit) = run {
+    inline fun <R : Any, T> with(defaultValue: T, crossinline get: R.(String, T) -> T, crossinline set: R.(String, T) -> Unit) = run {
         object : ReadWriteProperty<R, T> {
             override fun getValue(thisRef: R, property: KProperty<*>): T {
                 return get(thisRef, property.name, defaultValue)
