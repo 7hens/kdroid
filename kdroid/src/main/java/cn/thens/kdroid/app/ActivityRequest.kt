@@ -43,11 +43,11 @@ class ActivityRequest(private val context: Context) {
             try {
                 contracts.put(requestCode, this)
                 if (context is FragmentActivity) {
-                    context.supportFragmentManager.apply {
-                        request(findFragmentByTag(FRAGMENT_TAG) ?: BridgeFragment().also {
+                    context.supportFragmentManager.run {
+                        findFragmentByTag(FRAGMENT_TAG) ?: BridgeFragment().also {
                             beginTransaction().add(it, FRAGMENT_TAG).commitNow()
-                        }, requestCode)
-                    }
+                        }
+                    }.request(requestCode)
                 } else {
                     context.startActivity(Intent(context, BridgeActivity::class.java)
                             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

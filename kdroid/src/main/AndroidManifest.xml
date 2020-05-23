@@ -7,6 +7,7 @@
             android:name="cn.thens.kdroid.app.ActivityRequest$BridgeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleInstance"
+            android:multiprocess="true"
             android:theme="@style/Theme.Transparent" />
 
         <provider

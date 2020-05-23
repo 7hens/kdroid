@@ -8,18 +8,18 @@ import androidx.core.content.ContextCompat
 
 object AndroidPermissions {
     suspend fun requestAll(context: Context, vararg permissions: String): Map<String, Boolean> {
-        val surePermissions = mutableMapOf<String, Boolean>()
+        val result = mutableMapOf<String, Boolean>()
         val notSurePermissions = mutableListOf<String>()
         permissions.forEach { permission ->
             if (isGranted(context, permission)) {
-                surePermissions[permission] = true
+                result[permission] = true
             } else {
+                result[permission] = false
                 notSurePermissions.add(permission)
             }
         }
-        ActivityRequest(context).permissions(*notSurePermissions.toTypedArray())
-                .toMap(surePermissions)
-        return surePermissions
+        ActivityRequest(context).permissions(*notSurePermissions.toTypedArray()).toMap(result)
+        return result
     }
 
     suspend fun request(context: Context, permission: String): Boolean {
