@@ -27,7 +27,7 @@ class SampleActivity : Activity(), CoroutineScope by AndroidMainScope() {
                 setOnClickListener {
                     launch {
                         val result = ActivityRequest(context)
-                                .start(Intent(context, SecondActivity::class.java))
+                                .result(Intent(context, SecondActivity::class.java))
                         Logdog.debug("resultCode: $result")
                     }
                 }

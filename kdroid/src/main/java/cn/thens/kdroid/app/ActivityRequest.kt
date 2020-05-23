@@ -20,12 +20,12 @@ class ActivityRequest(private val context: Context) {
         return suspendCoroutine<Any> { Contract(fn, it).launch(context) } as T
     }
 
-    suspend fun start(intent: Intent, options: Bundle? = null): Result {
+    suspend fun result(intent: Intent, options: Bundle? = null): Result {
         return request { startActivityForResult(intent, it, options) }
     }
 
-    suspend fun start(intent: IntentSender, fillInIntent: Intent, flagsMask: Int,
-                      flagsValues: Int, extraFlags: Int, options: Bundle? = null): Result {
+    suspend fun result(intent: IntentSender, fillInIntent: Intent, flagsMask: Int,
+                       flagsValues: Int, extraFlags: Int, options: Bundle? = null): Result {
         return request {
             startIntentSenderForResult(intent, it, fillInIntent, flagsMask,
                     flagsValues, extraFlags, options)
@@ -34,10 +34,6 @@ class ActivityRequest(private val context: Context) {
 
     suspend fun permissions(vararg permissions: String): Map<String, Boolean> {
         return request { requestPermissions(permissions, it) }
-    }
-
-    suspend fun permission(permission: String): Boolean {
-        return permissions(permission)[permission] == true
     }
 
     private data class Contract(val request: Fragment.(requestCode: Int) -> Unit,
@@ -85,7 +81,7 @@ class ActivityRequest(private val context: Context) {
 
         private fun launch(intent: Intent) {
             val requestCode = intent.getIntExtra(REQUEST_CODE, 0)
-            contracts[requestCode]!!.launch(this)
+            contracts[requestCode]?.launch(this)
         }
     }
 
@@ -104,7 +100,7 @@ class ActivityRequest(private val context: Context) {
 
         private fun onResult(requestCode: Int, result: Any) {
             (context as? BridgeActivity)?.moveTaskToBack(true)
-            contracts.get(requestCode)?.continuation?.resume(result)
+            contracts[requestCode]?.continuation?.resume(result)
             contracts.remove(requestCode)
         }
     }
