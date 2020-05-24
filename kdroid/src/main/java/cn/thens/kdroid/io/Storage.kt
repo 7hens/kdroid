@@ -2,7 +2,7 @@ package cn.thens.kdroid.io
 
 import java.lang.ref.WeakReference
 
-interface Ware<V> {
+interface Storage<V> {
     suspend fun get(): V
 
     suspend fun put(value: V)
@@ -15,9 +15,9 @@ interface Ware<V> {
         }
     }
 
-    fun cache(cache: Ware<V>): Ware<V> {
+    fun cache(cache: Storage<V>): Storage<V> {
         val source = this
-        return object : Ware<V> {
+        return object : Storage<V> {
             override suspend fun get(): V {
                 return try {
                     cache.get()
@@ -33,9 +33,9 @@ interface Ware<V> {
         }
     }
 
-    fun <U> codec(codec: Codec<V, U>): Ware<U> {
+    fun <U> codec(codec: Codec<V, U>): Storage<U> {
         val source = this
-        return object : Ware<U> {
+        return object : Storage<U> {
             override suspend fun get(): U {
                 return codec.encode(source.get())
             }
@@ -49,8 +49,8 @@ interface Ware<V> {
     class NotFoundException : RuntimeException()
 
     companion object {
-        fun <V> memory(): Ware<V> {
-            return object : Ware<V> {
+        fun <V> memory(): Storage<V> {
+            return object : Storage<V> {
                 private var cache = WeakReference<V>(null)
 
                 override suspend fun get(): V {
