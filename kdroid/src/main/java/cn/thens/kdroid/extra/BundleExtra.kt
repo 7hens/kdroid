@@ -159,4 +159,18 @@ interface BundleExtra {
     }
 
     companion object: BundleExtra
+
+    open class CompanionOptions<out Options> : BundleExtra {
+        @Suppress("UNCHECKED_CAST")
+        private val options: Options by lazy { this as Options }
+
+        fun bundle(configure: Options.(Bundle) -> Unit): Bundle {
+            return apply(Bundle(), configure)
+        }
+
+        fun apply(bundle: Bundle, configure: Options.(Bundle) -> Unit): Bundle {
+            configure(options, bundle)
+            return bundle
+        }
+    }
 }

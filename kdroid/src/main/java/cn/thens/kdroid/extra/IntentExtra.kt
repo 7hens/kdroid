@@ -1,5 +1,7 @@
 package cn.thens.kdroid.extra
 
+import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
@@ -126,5 +128,22 @@ interface IntentExtra {
         return with(Intent::getStringArrayListExtra) { n, v -> putExtra(n, v) }
     }
 
-    companion object: IntentExtra
+    companion object : IntentExtra
+
+    open class CompanionOptions<out Options> : IntentExtra {
+        private val className: String by lazy { javaClass.name.replace("\$Companion", "") }
+
+        @Suppress("UNCHECKED_CAST")
+        private val options: Options by lazy { this as Options }
+
+        fun intent(context: Context, configure: Options.(Intent) -> Unit): Intent {
+            val intent = Intent().setComponent(ComponentName(context.packageName, className))
+            return apply(intent, configure)
+        }
+
+        fun apply(intent: Intent, configure: Options.(Intent) -> Unit): Intent {
+            configure(options, intent)
+            return intent
+        }
+    }
 }

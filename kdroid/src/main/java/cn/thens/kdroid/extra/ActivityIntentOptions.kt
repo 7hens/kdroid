@@ -11,9 +11,9 @@ import androidx.annotation.RequiresApi
  * @author 7hens
  */
 @Suppress("MemberVisibilityCanBePrivate", "unused")
-open class ActivityIntentOptions<out IntentOptions> : CompanionIntentOptions<IntentOptions>() {
+open class ActivityIntentOptions<out Options> : IntentExtra.CompanionOptions<Options>() {
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-    fun start(context: Context, bundle: Bundle?, configure: IntentOptions.(Intent) -> Unit) {
+    fun start(context: Context, bundle: Bundle?, configure: Options.(Intent) -> Unit) {
         context.startActivity(intent(context, configure), bundle)
     }
 
@@ -22,7 +22,7 @@ open class ActivityIntentOptions<out IntentOptions> : CompanionIntentOptions<Int
         start(context, bundle) {}
     }
 
-    fun start(context: Context, configure: IntentOptions.(Intent) -> Unit) {
+    fun start(context: Context, configure: Options.(Intent) -> Unit) {
         context.startActivity(intent(context, configure))
     }
 
@@ -31,7 +31,7 @@ open class ActivityIntentOptions<out IntentOptions> : CompanionIntentOptions<Int
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
-    fun startForResult(context: Activity, requestCode: Int, bundle: Bundle?, configure: IntentOptions.(Intent) -> Unit) {
+    fun startForResult(context: Activity, requestCode: Int, bundle: Bundle?, configure: Options.(Intent) -> Unit) {
         context.startActivityForResult(intent(context, configure), requestCode, bundle)
     }
 
@@ -40,7 +40,7 @@ open class ActivityIntentOptions<out IntentOptions> : CompanionIntentOptions<Int
         startForResult(context, requestCode, bundle) {}
     }
 
-    fun startForResult(context: Activity, requestCode: Int, configure: IntentOptions.(Intent) -> Unit) {
+    fun startForResult(context: Activity, requestCode: Int, configure: Options.(Intent) -> Unit) {
         context.startActivityForResult(intent(context, configure), requestCode)
     }
 
