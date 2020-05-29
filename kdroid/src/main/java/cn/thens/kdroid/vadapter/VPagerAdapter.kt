@@ -7,7 +7,8 @@ import androidx.viewpager.widget.PagerAdapter
 /**
  * The Adapter for [ViewPager][android.support.v4.view.PagerAdapter].
  */
-open class VPagerAdapter(private val adapter: VAdapterHelper) : PagerAdapter() {
+abstract class VPagerAdapter : PagerAdapter() {
+    abstract val adapter: VAdapterHelper
 
     override fun getCount(): Int = adapter.itemCount
 

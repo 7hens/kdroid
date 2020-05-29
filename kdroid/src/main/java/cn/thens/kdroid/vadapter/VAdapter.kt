@@ -26,15 +26,21 @@ interface VAdapter {
     }
 
     fun pager(): VPagerAdapter {
-        return VPagerAdapter(helper())
+        return object : VPagerAdapter() {
+            override val adapter: VAdapterHelper = helper()
+        }
     }
 
     fun list(): VListAdapter {
-        return VListAdapter(helper())
+        return object : VListAdapter() {
+            override val adapter: VAdapterHelper = helper()
+        }
     }
 
     fun recycler(): VRecyclerAdapter {
-        return VRecyclerAdapter(this)
+        return object : VRecyclerAdapter() {
+            override val adapter: VAdapter = this@VAdapter
+        }
     }
 
     fun mergeWith(adapter: VAdapter): VAdapter {

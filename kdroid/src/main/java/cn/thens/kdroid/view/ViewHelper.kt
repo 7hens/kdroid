@@ -6,7 +6,7 @@ import android.graphics.PixelFormat
 import android.os.Build
 import android.view.*
 import android.widget.TextView
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 import java.util.concurrent.atomic.AtomicInteger
 
 /**
@@ -45,7 +45,7 @@ object ViewHelper {
     fun setTextAutoWrap(view: TextView, rawText: String) {
         onLaidOut(view) {
             if (width == 0) {
-                Logdog.error("view width is 0")
+                Logdog.get().error("view width is 0")
                 return@onLaidOut
             }
             val textWidth = (width - paddingLeft - paddingRight).toFloat()

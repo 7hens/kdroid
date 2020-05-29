@@ -33,7 +33,7 @@ class TestRefreshActivity : BaseActivity() {
                 delay(1000L)
                 val appList = AppItemAdapter.getAppList(context)
                 appItemAdapter.addAll(appList)
-                appItemAdapter.notifyChanged()
+                appItemAdapter.notifyDataSetChanged()
                 vRefreshLayout.finishLoadmore()
             }
         }

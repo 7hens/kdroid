@@ -1,6 +1,6 @@
 package cn.thens.kdroid.io
 
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 import okhttp3.logging.HttpLoggingInterceptor
 
 class HttpLogger : HttpLoggingInterceptor.Logger {
@@ -13,7 +13,7 @@ class HttpLogger : HttpLoggingInterceptor.Logger {
         val formattedMessage = if (isJson) formatJson(decodeUnicode(message)) else message
         mMessage.append(formattedMessage + "\n")
         if (formattedMessage.startsWith("<-- END HTTP") || formattedMessage.startsWith("<-- HTTP FAILED")) {
-            Logdog.debug(mMessage.toString())
+            Logdog.get().debug(mMessage.toString())
             mMessage.setLength(0)
         }
     }

@@ -5,11 +5,13 @@ import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import cn.thens.kdroid.io.AndroidMainScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-open class Stage(context: Context, attrs: AttributeSet? = null) : View(context, attrs), AndroidMainScope {
+open class Stage(context: Context, attrs: AttributeSet? = null) : View(context, attrs),
+        CoroutineScope by AndroidMainScope() {
     private var isStarted = false
     val children = ArrayList<Sprite>()
 

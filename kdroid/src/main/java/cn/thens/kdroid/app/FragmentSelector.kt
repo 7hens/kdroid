@@ -3,7 +3,7 @@ package cn.thens.kdroid.app
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 abstract class FragmentSelector(
@@ -69,7 +69,7 @@ abstract class FragmentSelector(
             }
             fragment
         } catch (e: Throwable) {
-            Logdog.error(e)
+            Logdog.get().error(e)
             null
         }
     }

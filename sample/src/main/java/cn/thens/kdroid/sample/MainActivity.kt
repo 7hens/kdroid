@@ -11,7 +11,6 @@ import cn.thens.kdroid.sample.jbridge.JBridgeActivity
 import cn.thens.kdroid.sample.launcher.LauncherMainActivity
 import cn.thens.kdroid.sample.nature.NatureMainActivity
 import cn.thens.kdroid.sample.test.TestRefreshActivity
-import cn.thens.kdroid.sample.test.TestVAdapterActivity
 
 class MainActivity : Activity() {
 
@@ -26,7 +25,6 @@ class MainActivity : Activity() {
 
             Button(context).apply {
                 text = "VAdapter Demo"
-                setOnClickListener { startActivity<TestVAdapterActivity>() }
             }.let { addView(it) }
 
             Button(context).apply {

@@ -12,11 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.thens.kdroid.io.AndroidMainScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.floor
 
-class LauncherMainActivity : AppCompatActivity(), AndroidMainScope {
+class LauncherMainActivity : AppCompatActivity(), CoroutineScope by AndroidMainScope() {
     private val cellGridAdapter by lazy { AppItemAdapter() }
     private lateinit var vTitle: TextView
 

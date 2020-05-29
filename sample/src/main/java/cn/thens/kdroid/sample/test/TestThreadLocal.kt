@@ -1,6 +1,6 @@
 package cn.thens.kdroid.sample.test
 
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 
 
 object TestThreadLocal {
@@ -23,7 +23,7 @@ object TestThreadLocal {
 
             Thread.sleep(1000)
             val out = threadLocal.get()
-            Logdog.debug("out = $out\nin1 = $in1\nin2 = $in2")
+            Logdog.get().debug("out = $out\nin1 = $in1\nin2 = $in2")
         }.start()
     }
 }

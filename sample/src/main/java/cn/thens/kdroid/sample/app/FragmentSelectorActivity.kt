@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import cn.thens.kdroid.app.FragmentSelector
-import cn.thens.kdroid.util.Logdog
 import cn.thens.kdroid.sample.R
+import cn.thens.logdog.Logdog
 import kotlinx.android.synthetic.main.activity_fragment_selector.*
 
 class FragmentSelectorActivity : AppCompatActivity() {
@@ -47,29 +47,29 @@ class FragmentSelectorActivity : AppCompatActivity() {
         private val name get() = javaClass.simpleName
 
         override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-            Logdog.debug("$name.onCreateView()")
+            Logdog.get().debug("$name.onCreateView()")
             return TextView(activity!!).apply {
                 text = name
             }
         }
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            Logdog.debug("$name.onViewCreated()")
+            Logdog.get().debug("$name.onViewCreated()")
             super.onViewCreated(view, savedInstanceState)
         }
 
         override fun onResume() {
-            Logdog.debug("$name.onResume()")
+            Logdog.get().debug("$name.onResume()")
             super.onResume()
         }
 
         override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-            Logdog.debug("$name.setUserVisibleHint($isVisibleToUser)")
+            Logdog.get().debug("$name.setUserVisibleHint($isVisibleToUser)")
             super.setUserVisibleHint(isVisibleToUser)
         }
 
         override fun onHiddenChanged(hidden: Boolean) {
-            Logdog.debug("$name.onHiddenChanged($hidden)")
+            Logdog.get().debug("$name.onHiddenChanged($hidden)")
             super.onHiddenChanged(hidden)
         }
     }

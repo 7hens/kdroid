@@ -12,7 +12,7 @@ import cn.thens.kdroid.app.toast
 import cn.thens.kdroid.extra.ActivityIntentOptions
 import cn.thens.kdroid.web.JBridge
 import cn.thens.kdroid.web.WebViewSecurity
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 
 class JBridgeActivity : Activity() {
     private val url get() = "file:///android_asset/jbridge.html"
@@ -30,7 +30,7 @@ class JBridgeActivity : Activity() {
                 val jBridge = JBridge.create(this)
                 jBridge.register("toast") { arg, callback ->
                     toast(arg)
-                    Logdog.debug(arg)
+                    Logdog.get().debug(arg)
                     callback("toast.callback")
                 }
             }.also { addView(it) }

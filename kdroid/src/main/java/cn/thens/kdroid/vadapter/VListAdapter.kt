@@ -3,12 +3,13 @@ package cn.thens.kdroid.vadapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import androidx.annotation.LayoutRes
 
 /**
  * The Adapter for [ListView][android.widget.ListView], [GridView][android.widget.GridView], [Spinner][android.widget.Spinner] and etc.
  */
-open class VListAdapter(private val adapter: VAdapterHelper) : BaseAdapter() {
+abstract class VListAdapter : BaseAdapter() {
+    abstract val adapter: VAdapterHelper
+
     override fun getCount(): Int = adapter.itemCount
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

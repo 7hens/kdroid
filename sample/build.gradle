@@ -90,6 +90,7 @@ dependencies {
     // implementation 'com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0'
     // implementation 'com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.0.0'
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    implementation 'com.github.7hens:logdog:0.4'
     // implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation project(':kdroid')
 }

@@ -1,6 +1,7 @@
 package cn.thens.kdroid.util
 
 import android.os.Build
+import cn.thens.logdog.Logdog
 import java.lang.reflect.*
 
 /**
@@ -51,7 +52,7 @@ interface Reflect<T> {
                         "setHiddenApiExemptions", arrayOf<Class<*>>(Array<String>::class.java)) as Method
                 setHiddenApiExemptions.invoke(getRuntime.invoke(null), arrayOf("L"))
             } catch (e: Throwable) {
-                Logdog.error(e)
+                Logdog.get().error(e)
             }
         }
 

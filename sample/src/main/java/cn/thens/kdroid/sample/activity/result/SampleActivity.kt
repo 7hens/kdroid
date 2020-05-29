@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import cn.thens.kdroid.app.ActivityRequest
 import cn.thens.kdroid.io.AndroidMainScope
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -28,7 +28,7 @@ class SampleActivity : Activity(), CoroutineScope by AndroidMainScope() {
                     launch {
                         val result = ActivityRequest(context)
                                 .result(Intent(context, SecondActivity::class.java))
-                        Logdog.debug("resultCode: $result")
+                        Logdog.get().debug("resultCode: $result")
                     }
                 }
             }.also { addView(it) }

@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * the Adapter for [RecyclerView][android.support.v7.widget.RecyclerView]
  */
-open class VRecyclerAdapter(private val adapter: VAdapter)
-    : RecyclerView.Adapter<VRecyclerAdapter.Holder>() {
+abstract class VRecyclerAdapter : RecyclerView.Adapter<VRecyclerAdapter.Holder>() {
+    abstract val adapter: VAdapter
 
     override fun getItemCount(): Int = adapter.itemCount
 

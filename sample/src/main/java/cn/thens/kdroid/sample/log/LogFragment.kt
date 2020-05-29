@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.LogMessages
+import cn.thens.logdog.Logdog
 
 class LogFragment : Fragment() {
 
@@ -27,22 +28,22 @@ class LogFragment : Fragment() {
     }
 
     private fun test() {
-        Logdog.count("logdog")
-        Logdog.time("logdog")
-        Logdog.debug(TEXT)
-        Logdog.debug(listOf(TEXT, TEXT, TEXT))
-        Logdog.warn(TEXT)
-        Logdog.error(RuntimeException())
-        Logdog.wtf(false, TEXT)
-        Logdog.time("logdog")
-        Logdog.count("logdog")
-        Logdog.memory()
-        Logdog.trace()
-        Logdog.tag("@TestTag").debug("hello, test tag")
+        Logdog.get().debug(LogMessages.count("logdog"))
+        Logdog.get().debug(LogMessages.time("logdog"))
+        Logdog.get().debug(TEXT)
+        Logdog.get().debug(listOf(TEXT, TEXT, TEXT))
+        Logdog.get().warn(TEXT)
+        Logdog.get().error(RuntimeException())
+        Logdog.get().onlyIf(false).error(TEXT)
+        Logdog.get().debug(LogMessages.time("logdog"))
+        Logdog.get().debug(LogMessages.count("logdog"))
+        Logdog.get().debug(LogMessages.memory(requireContext()))
+        Logdog.get().error(Throwable())
+        Logdog.get().tag("@TestTag").debug("hello, test tag")
     }
 
     private fun testWithLongNameXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX() {
-        Logdog.count("logdog")
+        Logdog.get().debug(LogMessages.count("logdog"))
     }
 
     companion object {

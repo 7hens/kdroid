@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import cn.thens.kdroid.KDroid
-import cn.thens.kdroid.util.Logdog
+import cn.thens.logdog.Logdog
 import java.util.*
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicBoolean
@@ -55,7 +55,7 @@ class GlobalBroadcast private constructor(private val context: Application) {
                 }
                 callbacks[command]?.invoke(query)
             } catch (e: Throwable) {
-                Logdog.error(e)
+                Logdog.get().error(e)
             }
         }
     }
@@ -111,7 +111,7 @@ class GlobalBroadcast private constructor(private val context: Application) {
             for ((command, record) in records) {
                 buffer.append(command).append(" ").append(record).append("\n")
             }
-            Logdog.debug(buffer.toString())
+            Logdog.get().debug(buffer.toString())
         }
     }
 
