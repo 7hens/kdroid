@@ -11,42 +11,47 @@ import android.webkit.WebView
 object WebViewSecurity {
     @SuppressLint("SetJavaScriptEnabled")
     fun init(webView: WebView) {
-        webView.setBackgroundColor(Color.TRANSPARENT)
-        val settings = webView.settings
-        settings.javaScriptEnabled = true
-        settings.javaScriptCanOpenWindowsAutomatically = true
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        webView.apply {
+            setBackgroundColor(Color.TRANSPARENT)
+            removeJavascriptInterface("searchBoxJavaBridge_")
+            removeJavascriptInterface("accessibility")
+            removeJavascriptInterface("accessibilityTraversal")
+            settings.apply {
+                javaScriptEnabled = true
+                javaScriptCanOpenWindowsAutomatically = true
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+                }
+                allowFileAccess = false
+                allowContentAccess = false
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    allowFileAccessFromFileURLs = false
+                    allowUniversalAccessFromFileURLs = false
+                }
+                setAppCacheEnabled(true)
+                blockNetworkImage = false
+                domStorageEnabled = true
+                useWideViewPort = true
+                loadWithOverviewMode = true
+                databaseEnabled = true
+                @Suppress("DEPRECATION")
+                savePassword = false
+            }
         }
-        settings.allowFileAccess = false
-        settings.allowContentAccess = false
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            settings.allowFileAccessFromFileURLs = false
-            settings.allowUniversalAccessFromFileURLs = false
-        }
-        settings.setAppCacheEnabled(true)
-        settings.blockNetworkImage = false
-        settings.domStorageEnabled = true
-        settings.useWideViewPort = true
-        settings.loadWithOverviewMode = true
-        settings.databaseEnabled = true
-        @Suppress("DEPRECATION")
-        settings.savePassword = false
-        webView.removeJavascriptInterface("searchBoxJavaBridge_")
-        webView.removeJavascriptInterface("accessibility")
-        webView.removeJavascriptInterface("accessibilityTraversal")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true)
         }
     }
 
     fun destroy(webView: WebView) {
-        (webView.parent as? ViewGroup)?.removeView(webView)
-        webView.stopLoading()
-        webView.settings.javaScriptEnabled = false
-        webView.clearHistory()
-        webView.loadUrl("about:blank")
-        webView.removeAllViews()
-        webView.destroy()
+        webView.apply {
+            (parent as? ViewGroup)?.removeView(webView)
+            stopLoading()
+            settings.javaScriptEnabled = false
+            clearHistory()
+            loadUrl("about:blank")
+            removeAllViews()
+            destroy()
+        }
     }
 }

@@ -27,8 +27,8 @@ interface Storage<V> {
             }
 
             override suspend fun put(value: V) {
-                cache.put(value)
                 source.put(value)
+                cache.put(value)
             }
         }
     }
@@ -49,16 +49,28 @@ interface Storage<V> {
     class NotFoundException : RuntimeException()
 
     companion object {
-        fun <V> memory(): Storage<V> {
+        fun <V> weakCache(): Storage<V> {
             return object : Storage<V> {
                 private var cache = WeakReference<V>(null)
-
                 override suspend fun get(): V {
                     return cache.get() ?: throw NotFoundException()
                 }
 
                 override suspend fun put(value: V) {
                     cache = WeakReference(value)
+                }
+            }
+        }
+
+        fun <V> strongCache(): Storage<V> {
+            return object : Storage<V> {
+                private var cache: V? = null
+                override suspend fun get(): V {
+                    return cache!!
+                }
+
+                override suspend fun put(value: V) {
+                    cache = value
                 }
             }
         }

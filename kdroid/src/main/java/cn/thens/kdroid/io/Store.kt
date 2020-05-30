@@ -7,13 +7,13 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 interface Store<K, V> {
-    fun pick(key: K): Storage<V>
+    fun storage(key: K): Storage<V>
 
     fun cache(cache: Store<K, V>): Store<K, V> {
         val source = this
         return object : Store<K, V> {
-            override fun pick(key: K): Storage<V> {
-                return source.pick(key).cache(cache.pick(key))
+            override fun storage(key: K): Storage<V> {
+                return source.storage(key).cache(cache.storage(key))
             }
         }
     }
@@ -21,8 +21,8 @@ interface Store<K, V> {
     fun <U> codecValue(codec: Codec<V, U>): Store<K, U> {
         val source = this
         return object : Store<K, U> {
-            override fun pick(key: K): Storage<U> {
-                return source.pick(key).codec(codec)
+            override fun storage(key: K): Storage<U> {
+                return source.storage(key).codec(codec)
             }
         }
     }
@@ -30,8 +30,8 @@ interface Store<K, V> {
     fun <L> liftKey(func: (L) -> K): Store<L, V> {
         val source = this
         return object : Store<L, V> {
-            override fun pick(key: L): Storage<V> {
-                return source.pick(func.invoke(key))
+            override fun storage(key: L): Storage<V> {
+                return source.storage(func.invoke(key))
             }
         }
     }
@@ -39,7 +39,7 @@ interface Store<K, V> {
     companion object {
         inline fun <K, V> create(crossinline fn: (key: K) -> Storage<V>): Store<K, V> {
             return object : Store<K, V> {
-                override fun pick(key: K): Storage<V> {
+                override fun storage(key: K): Storage<V> {
                     return fn(key)
                 }
             }
