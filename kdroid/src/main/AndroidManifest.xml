@@ -3,13 +3,6 @@
     package="cn.thens.kdroid.core">
 
     <application>
-        <activity
-            android:name="cn.thens.kdroid.app.ActivityRequest$BridgeActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:launchMode="singleInstance"
-            android:multiprocess="true"
-            android:theme="@style/Theme.Transparent" />
-
         <provider
             android:name="cn.thens.kdroid.KDroid$InitProvider"
             android:authorities="${applicationId}.kdroid.init"

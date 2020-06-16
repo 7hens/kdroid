@@ -2,12 +2,11 @@ package cn.thens.kdroid.sample.activity.result
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
-import cn.thens.kdroid.app.ActivityRequest
+import cn.thens.activity_request.ActivityIntentOptions
 import cn.thens.kdroid.io.AndroidMainScope
 import cn.thens.logdog.Logdog
 import kotlinx.coroutines.CoroutineScope
@@ -26,8 +25,7 @@ class SampleActivity : Activity(), CoroutineScope by AndroidMainScope() {
                 text = "startForResultWithCallback"
                 setOnClickListener {
                     launch {
-                        val result = ActivityRequest(context)
-                                .result(Intent(context, SecondActivity::class.java))
+                        val result = SecondActivity.startForResult(context)
                         Logdog.get().debug("resultCode: $result")
                     }
                 }
@@ -59,5 +57,7 @@ class SampleActivity : Activity(), CoroutineScope by AndroidMainScope() {
                 }.also { addView(it) }
             }
         }
+
+        companion object: ActivityIntentOptions<Companion>
     }
 }
