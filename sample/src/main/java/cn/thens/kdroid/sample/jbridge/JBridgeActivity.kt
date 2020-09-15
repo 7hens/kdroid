@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.webkit.WebView
 import android.widget.Button
 import android.widget.FrameLayout
+import cn.thens.activity_request.ActivityIntentOptions
 import cn.thens.kdroid.app.toast
-import cn.thens.kdroid.extra.ActivityIntentOptions
 import cn.thens.kdroid.web.JBridge
 import cn.thens.kdroid.web.WebViewSecurity
 import cn.thens.logdog.Logdog
@@ -43,5 +43,5 @@ class JBridgeActivity : Activity() {
         }
     }
 
-    companion object : ActivityIntentOptions<Companion>()
+    companion object : ActivityIntentOptions<Companion>
 }

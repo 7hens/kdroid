@@ -3,11 +3,15 @@ package cn.thens.kdroid.view
 import android.content.Context
 import android.content.res.Configuration
 import android.graphics.PixelFormat
+import android.graphics.Rect
+import android.graphics.drawable.Drawable
 import android.os.Build
+import android.util.TypedValue
 import android.view.*
 import android.widget.TextView
 import cn.thens.logdog.Logdog
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.math.roundToInt
 
 /**
  * @author 7hens
@@ -26,20 +30,30 @@ object ViewHelper {
         }
     }
 
-    fun <V: View> onLaidOut(view: V, action: V.() -> Unit) {
+    fun getDrawableFromAttr(context: Context, attr: Int): Drawable? {
+        val typedValue = TypedValue()
+        context.theme.resolveAttribute(attr, typedValue, true)
+        val attribute = intArrayOf(attr)
+        val typedArray = context.theme.obtainStyledAttributes(typedValue.resourceId, attribute)
+        val drawable = typedArray.getDrawable(0)
+        typedArray.recycle()
+        return drawable
+    }
+
+    fun <V : View> onLaidOut(view: V, action: V.() -> Unit) {
         if (view.width != 0 || view.height != 0) {
             action.invoke(view)
             return
         }
         view.viewTreeObserver.addOnGlobalLayoutListener(
-                object : ViewTreeObserver.OnGlobalLayoutListener {
-                    override fun onGlobalLayout() {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            view.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                        }
-                        action.invoke(view)
+            object : ViewTreeObserver.OnGlobalLayoutListener {
+                override fun onGlobalLayout() {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        view.viewTreeObserver.removeOnGlobalLayoutListener(this)
                     }
-                })
+                    action.invoke(view)
+                }
+            })
     }
 
     fun setTextAutoWrap(view: TextView, rawText: String) {
@@ -50,9 +64,9 @@ object ViewHelper {
             }
             val textWidth = (width - paddingLeft - paddingRight).toFloat()
             val rawTextLines = rawText
-                    .replace("\r", "")
-                    .split("\n")
-                    .dropLastWhile { it.isEmpty() }
+                .replace("\r", "")
+                .split("\n")
+                .dropLastWhile { it.isEmpty() }
             val newText = StringBuilder()
             for (rawTextLine in rawTextLines) {
                 if (paint.measureText(rawTextLine) <= textWidth) {
@@ -122,6 +136,65 @@ object ViewHelper {
         layoutParams.dimAmount = 0.6f
         layoutParams.windowAnimations = android.R.style.Animation_Toast
         return layoutParams
+    }
+
+    fun getVisibleWindowSize(context: Context): Size? {
+        val displayMetrics = context.resources.displayMetrics
+        val windowWidth = displayMetrics.widthPixels
+        var windowHeight = displayMetrics.heightPixels
+        val statusBarWidth: Int = ViewHelper.getStatusBarWidth(context)
+        val statusBarHeight: Int = ViewHelper.getStatusBarHeight(context)
+        //        if (windowWidth > statusBarWidth) {
+//            windowWidth -= statusBarWidth;
+//        }
+        if (windowHeight > statusBarHeight) {
+            windowHeight -= statusBarHeight
+        }
+        return Size(windowWidth, windowHeight)
+    }
+
+    fun getStatusBarHeight(context: Context): Int {
+        val resources = context.resources
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else 0
+    }
+
+    fun getStatusBarWidth(context: Context): Int {
+        val resources = context.resources
+        val resourceId = resources.getIdentifier("status_bar_width", "dimen", "android")
+        return if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else 0
+    }
+
+    fun getViewGlobalRect(view: View): Rect {
+        val viewRect = Rect()
+        val location = IntArray(2)
+        view.getLocationOnScreen(location)
+        val left = location[0]
+        val top = location[1]
+        viewRect[left, top, left + view.width] = top + view.height
+        return viewRect
+    }
+
+    fun isPointInViewRect(view: View, x: Float, y: Float): Boolean {
+        return getViewGlobalRect(view).contains(x.roundToInt(), y.roundToInt())
+    }
+
+    fun performPress(view: View, x: Float, y: Float): Boolean {
+        if (view is ViewGroup) {
+            val childCount = view.childCount
+            for (i in 0 until childCount) {
+                if (performPress(view.getChildAt(i), x, y)) {
+                    return true
+                }
+            }
+        }
+        return if (isPointInViewRect(view, x, y)) {
+            view.performClick()
+        } else false
     }
 
 }

@@ -3,8 +3,7 @@ package cn.thens.kdroid.sample.app
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import cn.thens.kdroid.extra.ActivityIntentOptions
-import cn.thens.kdroid.extra.IntentExtra
+import cn.thens.activity_request.ActivityIntentOptions
 
 @Suppress("unused", "UNUSED_VARIABLE")
 class IntentExtraActivity : Activity() {
@@ -25,9 +24,9 @@ class IntentExtraActivity : Activity() {
         })
     }
 
-    companion object : ActivityIntentOptions<Companion>() {
-        var Intent.name by IntentExtra.string()
-        var Intent.count by IntentExtra.int()
-        var Intent.phone by IntentExtra.string()
+    companion object : ActivityIntentOptions<Companion> {
+        var Intent.name by string()
+        var Intent.count by int()
+        var Intent.phone by string()
     }
 }
