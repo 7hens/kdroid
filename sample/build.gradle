@@ -93,5 +93,5 @@ dependencies {
     implementation 'com.github.7hens:logdog:0.4'
     implementation 'com.github.7hens:activity-request:0.1'
     // implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
-    implementation project(':kdroid')
+    implementation rootProject
 }

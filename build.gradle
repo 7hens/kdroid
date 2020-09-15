@@ -17,8 +17,6 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.5.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-//        classpath "cn.thens.kdroid:vcs-revision-gradle-plugin:$kdroidVersion"
-//        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:3.1.2"
     }
 }
 
@@ -38,6 +36,5 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+apply from: 'build.lib.gradle'
+

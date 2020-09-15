@@ -8,7 +8,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleInstance"
             android:multiprocess="true"
-            android:theme="@style/Theme.Transparent" />
+            android:theme="@style/Jack.ActivityRequestTheme" />
 
         <provider
             android:name="cn.thens.kdroid.KDroid$InitProvider"
