@@ -1,6 +1,7 @@
 package cn.thens.kdroid.io
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.reflect.TypeToken
 import java.io.Reader
@@ -12,7 +13,9 @@ import kotlin.reflect.KClass
 
 open class Json {
     @Suppress("MemberVisibilityCanBePrivate", "SpellCheckingInspection")
-    protected val gson: Gson by lazy { Gson() }
+    protected val gson: Gson by lazy {
+        GsonBuilder().create()
+    }
 
     fun <T> parse(reader: Reader, type: Type): T {
         return gson.fromJson(reader, type)

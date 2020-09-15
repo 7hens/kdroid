@@ -4,7 +4,7 @@
 
     <application>
         <activity
-            android:name="cn.thens.kdroid.app.ActivityRequest$BridgeActivity"
+            android:name="cn.thens.kdroid.app.ActivityRequest$ShadowActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleInstance"
             android:multiprocess="true"
